@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 88%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #efeded;
+            padding: 0 100px;
+        }
+
+        #nav div {
+            display: flex;
+            align-items: center;
+        }
+
+        #nav #icon img {
+            height: 50px;
+            border-radius: 20px;
+            margin: 10px;
+        }
+
+        #nav #userid {
+            text-decoration: none;
+            font-size: 20px;
+            color: #002855;
+        }
+
+
+        #container {
+
+            width: 80%;
+            margin: auto;
+            margin-top: 120px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            grid-gap: 20px;
+        }
+
+        #container #ordersummary {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            padding: 20px;
+            height: 480px;
+            width: 25%;
+            position: fixed;
+            left: 1000px;
+
+        }
+
+        #container #ordersummary #hr1 {
+            margin: 8px 0;
+            border: 1px solid black;
+        }
+
+        #container #ordersummary hr {
+            margin: 12px 0;
+
+        }
+
+        #container #ordersummary .subtotal {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        #payment {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #1377c9;
+            border: none;
+            color: white;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        #apply {
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            background-color: #fff;
+            border: none;
+            color: #1377c9;
+            margin: 20px 0;
+            border: 2px solid #1377c9;
+            border-radius: 5px;
+        }
+
+        #apply:hover {
+            background-color: #090442;
+            color: white;
+            border: 2px solid #090442;
+        }
+
+        #congrats {
+            text-align: center;
+        }
+
+        #congrats span {
+            color: green;
+            font-weight: 1000;
+        }
+
+        #saving {
+            text-align: center;
+        }
+
+        #saving span {
+            color: red;
+            font-weight: 1000;
+        }
+
+        #discount {
+            color: red;
+            font-weight: 1000;
+        }
+
+        #products {
+
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        #products div {
+            padding: 20px;
+            padding-top: 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        #products div img {
+            width: 80%;
+            display: block;
+            margin: auto;
+        }
+
+        #products div button {
+            padding: 0 5px;
+            margin: 5px;
+            font-size: 20px;
+        }
+
+        #yourcart>h1 {
+            margin: 20px 35px;
+
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav">
+        <div id="icon"> <img src="media/Get started in Canva2.png" alt=""></div>
+        <div>
+            <p id="userid"></p>
+            <img src="/media/iconsuser-male.png" alt="">
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="yourcart">
+            <h1>Your Cart (<span id="procount">00</span>)</h1>
+            <div id="products"></div>
+
+        </div>
+        <div id="ordersummary">
+            <h1><b>Oder Summary</b></h1>
+            <hr id="hr1">
+            <p id="congrats"> Congratulations! You get <span> FREE Shipping.</span></p>
+            <hr>
+            <p>Items in your cart are excluded from coupons.</p>
+            <button id="apply">Apply Coupons</button>
+            <hr>
+            <div class="subtotal">
+                <p>Order Subtotal</p>
+                <p id="sbtotal">00</p>
+            </div>
+            <div class="subtotal">
+                <p>Sale Discount</p>
+                <p id="discount">00</p>
+            </div>
+            <div class="subtotal">
+                <p>Shipping Details</p>
+                <p>FREE</p>
+            </div>
+            <div class="subtotal">
+                <h2><b>Pre-Tax Total</b></h2>
+                <h2 id="pretotal"> <b>00</b></h2>
+            </div>
+            <hr>
+            <hr>
+            <h3 id="saving"> Total Saving <span id="tsaving">00</span></h3>
+            <button id="payment">Payment</button>
+
+        </div>
+    </div>
+    <footer>
+        <div>©2023 furniture & Beyond Inc. and its subsidiaries.</div>
+    </footer>
+</body>
+<script>
+    //navbar part starts from here
+    let username = document.getElementById("userid");
+    let usernameinp = localStorage.getItem("username");
+    if (usernameinp == null) username.innerText = "Sign in";
+    else username.innerText = usernameinp;
+    username.addEventListener("click", function () {
+        if (usernameinp == null) window.location.href = "./signup.html";
+        else window.location.href = "./logout.html";
+    })
+    let icon = document.getElementById("icon");
+    icon.addEventListener("click", function () {
+        window.location.href = "./index.html";
+    })
+
+    //
+    let lsdata = JSON.parse(localStorage.getItem("cart")) || [];
+    let container = document.getElementById("products");
+    let ctotal = document.getElementById("sbtotal");
+    let discount = document.getElementById("discount");
+    let pretotal = document.getElementById("pretotal");
+    let saving = document.getElementById("tsaving");
+    let procount = document.getElementById("procount");
+
+    display(lsdata);
+    function display(data) {
+        container.innerHTML = null;
+        let total = 0;
+        let count = 0;
+        data.forEach((e, i) => {
+            let card = document.createElement("div");
+            let img = document.createElement("img");
+            let brand = document.createElement("h2");
+            let price = document.createElement("h3");
+            let details = document.createElement("p");
+            let category = document.createElement("p");
+            let quantity = document.createElement("span");
+            let add = document.createElement("button");
+            let sub = document.createElement("button");
+            let btn = document.createElement("button");
+
+            img.src = e.img;
+            brand.innerText = e.brand;
+            price.innerText = "$" + e.price;
+            details.innerText = e.details;
+            category.innerText = e.category;
+            btn.innerText = "Remove";
+            add.innerText = "+";
+            quantity.innerText = e.quantity;
+            sub.innerText = "-";
+            total += e.price * e.quantity;
+            count += e.quantity;
+            //Increasing of quantity happening here
+            add.addEventListener("click", function () {
+                e.quantity++;
+                localStorage.setItem("cart", JSON.stringify(lsdata))
+                display(lsdata)
+                console.log(e.quantity)
+            })
+            //Decreasing of quantity happening here
+            sub.addEventListener("click", function () {
+                if (e.quantity > 1) e.quantity--;
+                localStorage.setItem("cart", JSON.stringify(lsdata))
+                display(lsdata)
+                console.log(e.quantity)
+            })
+            //Deleting  of Product for cart happening here
+            btn.addEventListener("click", function () {
+                lsdata.splice(i, 1);
+                localStorage.setItem("cart", JSON.stringify(lsdata))
+                display(lsdata)
+            })
+            /* Add to cart starts from here*/
+            card.append(img, brand, price, details, category, add, quantity, sub, btn);
+            container.append(card);
+        })
+        ctotal.innerText = "$" + total;
+        discount.innerText = "$" + total / 10
+        saving.innerText = "$" + total / 10
+        pretotal.innerText = "$" + (total - total / 10);
+        procount.innerText = count;
+    }
+</script>
+
+</html>
