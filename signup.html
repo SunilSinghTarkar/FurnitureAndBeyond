@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin Or Signup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            padding: 25px 100px;
+            font-size: 20px;
+            background-color: #1a4e8a;
+        }
+
+        #nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #container {
+            width: 35%;
+            margin: 40px auto;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+        }
+
+        #container>img {
+            width: 100%;
+        }
+
+        #container>div {
+            box-sizing: border-box;
+
+            padding: 40px;
+            padding-top: 0;
+        }
+
+        #container>div input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            font-size: 20px;
+            padding: 12px;
+            border: 1px solid #ababab;
+            align-items: center;
+        }
+
+        #container>div button {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            font-size: 20px;
+            padding: 10px;
+            background: none;
+            border: 1px solid #ababab;
+        }
+
+        #container>div button span img {
+            width: 6%;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #container #continue {
+            background-color: #1377c9;
+            color: white;
+        }
+
+        h2 {
+            color: #1a4e8a;
+            margin: 20px;
+        }
+
+        p {
+            font-size: 14px;
+
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <a href="/index.html">
+            < Back</a>
+    </div>
+    <div id="container">
+        <img src="/media/loginpage.webp" alt="">
+        <div>
+            <h2>sign in or create</h2>
+            <input type="email" id="email" placeholder="* Email">
+            <button id="continue">Continue</button>
+            <h1>OR</h1>
+
+            <button> <span><img src="/media/mac-os.png" alt=""></span> Continue with Apple</button>
+            <button> <span><img src="/media/google-logo (1).png" alt=""></span> Continue with Google</button>
+            <button> <span><img src="/media/facebook-new.png" alt=""></span> Continue with Facebook</button>
+            <p>By continuing you agree to enroll in and to the Terms of our Welcome Rewards Program. For information on
+                our privacy practices, please visit our Privacy Policy. California residents: view our Notice of
+                Financial Incentive here</p>
+        </div>
+    </div>
+    <footer>
+        <div>©2023 furniture & Beyond Inc. and its subsidiaries.</div>
+    </footer>
+</body>
+<script>
+    let lsdata = JSON.parse(localStorage.getItem("userdata")) || [];
+    let emailinp = document.getElementById("email");
+    let continuebtn = document.getElementById("continue");
+
+    continuebtn.addEventListener("click", function () {
+        let check = false;
+        lsdata.forEach((e) => {
+            if (e.email == emailinp.value) check = true;
+        })
+        if (check) {
+            localStorage.setItem("email", JSON.stringify(emailinp.value));
+            window.location.href = "./password.html";
+
+        }
+        else window.location.href = "./create.html";
+
+    })
+</script>
+
+</html>

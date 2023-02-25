@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 88%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #efeded;
+            padding: 0 100px;
+        }
+
+        #nav div {
+            display: flex;
+            align-items: center;
+        }
+
+        #nav #icon img {
+            height: 50px;
+            border-radius: 20px;
+            margin: 10px;
+        }
+
+        #nav #userid {
+            text-decoration: none;
+            font-size: 20px;
+            color: #002855;
+        }
+
+        #title {
+            width: 45%;
+            margin: auto;
+            margin-top: 120px;
+            text-align: center;
+            color: #002855;
+            font-family: 'Franklin Gothic Medium';
+            background-color: #d8f0fc;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        #addproduct {
+            width: 30%;
+            margin: 40px auto;
+            background-color: #bfe9fb;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #addproduct form {
+            width: 80%;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        #addproduct form input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #addproduct form select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            color: #555;
+        }
+
+        #addproduct form #details {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+
+        #submitbtn {
+            background-color: #002855;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <div id="icon"> <img src="media/Get started in Canva2.png" alt=""></div>
+        <div>
+            <p id="userid"></p>
+            <img src="/media/iconsuser-male.png" alt="">
+        </div>
+    </div>
+    <div id="title">
+        <h1>Hello Welcome To Admin Page </h1>
+    </div>
+    <div id="addproduct">
+        <form>
+            <label for="brand">Brand:</label><br>
+            <input type="text" id="brand" name="brand" placeholder="Enter Brand Name: " required><br><br>
+
+            <label for="image">Image URL:</label><br>
+            <input type="url" id="image" name="image" placeholder="Enter Image URL:" required><br><br>
+
+            <label for="price">Price:</label><br>
+            <input type="number" id="price" name="price" placeholder="Enter Price:" required><br><br>
+
+            <label for="details">Details:</label><br>
+            <textarea id="details" name="details" rows="2" cols="48" placeholder="Ender Product Details:"
+                required></textarea><br><br>
+
+            <label for="category">Category:</label><br>
+            <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="Laptop">Laptop</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Speakers">Speakers</option>
+                <option value="Camera">Camera</option>
+            </select><br><br>
+
+            <input id="submitbtn" type="submit" value="Add Product">
+        </form>
+    </div>
+    <footer>
+        <div>©2023 furniture & Beyond Inc. and its subsidiaries.</div>
+    </footer>
+</body>
+<script>
+    // Navbar part starts from here
+    let username = document.getElementById("userid");
+    let usernameinp = localStorage.getItem("username");
+    if (usernameinp == null) username.innerText = "Sign in";
+    else username.innerText = usernameinp;
+    username.addEventListener("click", function () {
+        if (usernameinp == null) window.location.href = "./signup.html";
+        else window.location.href = "./logout.html";
+    })
+    let icon = document.getElementById("icon");
+    icon.addEventListener("click", function () {
+        window.location.href = "./index.html";
+    })
+    // Storing data to localstorage part starts from here
+    let fetcheddata = [];
+    async function fetchdata() {
+        try {
+            let data = await fetch("https://dbioz2ek0e.execute-api.ap-south-1.amazonaws.com/mockapi/get-tech-products")
+            data = await data.json();
+            fetcheddata = data.data;
+            data.data.forEach((e) => {
+                fetcheddata.push(e);
+            })
+
+        }
+        catch (arr) {
+            console.log("error");
+        }
+    }
+    fetchdata();
+
+    let form = document.querySelector('form');
+    let brand = document.getElementById('brand');
+    let image = document.getElementById('image');
+    let price = document.getElementById('price');
+    let details = document.getElementById('details');
+    let category = document.getElementById('category');
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        let lsdata = JSON.parse(localStorage.getItem("productdata"));
+        if (lsdata == null) lsdata = fetcheddata;
+        let product = {
+            brand: brand.value,
+            img: image.value,
+            price: price.value,
+            details: details.value,
+            category: category.value,
+            id: lsdata.length + 1,
+        }
+        lsdata.push(product);
+        localStorage.setItem("productdata", JSON.stringify(lsdata));
+
+        form.reset();
+        alert("Product added successfully");
+    })
+
+</script>
+
+</html>
