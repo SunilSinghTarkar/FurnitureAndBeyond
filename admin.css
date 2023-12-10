@@ -1,0 +1,99 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 88%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #efeded;
+            padding: 0 100px;
+        }
+
+        #nav div {
+            display: flex;
+            align-items: center;
+        }
+
+        #nav #icon img {
+            height: 50px;
+            border-radius: 20px;
+            margin: 10px;
+        }
+
+        #nav #userid {
+            text-decoration: none;
+            font-size: 20px;
+            color: #002855;
+        }
+
+        #title {
+            width: 45%;
+            margin: auto;
+            margin-top: 120px;
+            text-align: center;
+            color: #002855;
+            font-family: 'Franklin Gothic Medium';
+            background-color: #d8f0fc;
+            padding: 10px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        #addproduct {
+            width: 30%;
+            margin: 40px auto;
+            background-color: #bfe9fb;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #addproduct form {
+            width: 80%;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        #addproduct form input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #addproduct form select {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            color: #555;
+        }
+
+        #addproduct form #details {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+
+        #submitbtn {
+            background-color: #002855;
+            color: #fff;
+        }
+        @media screen and (max-width: 900px) {
+            #nav >div{
+              padding-right: 100px;
+            }
+        }
+  
