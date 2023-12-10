@@ -1,0 +1,183 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+#nav {
+    position: fixed;
+    top: 0;
+    width: 88%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #efeded;
+    padding: 0 100px;
+}
+#nav div {
+    display: flex;
+    align-items: center;
+}
+#nav #icon img {
+    height: 50px;
+    border-radius: 20px;
+    margin: 10px;
+}
+#nav #userid {
+    text-decoration: none;
+    font-size: 20px;
+    color: #002855;
+}
+#container {
+
+    width: 80%;
+    margin: auto;
+    margin-top: 120px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+#container #ordersummary {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    padding: 20px;
+    height: 480px;
+    width: 25%;
+    position: fixed;
+    left: 1000px;
+}
+#container #ordersummary #hr1 {
+    margin: 8px 0;
+    border: 1px solid black;
+}
+
+#container #ordersummary hr {
+    margin: 12px 0;
+
+}
+
+#container #ordersummary .subtotal {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+#payment {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #1377c9;
+    border: none;
+    color: white;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+#apply {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    color: #1377c9;
+    margin: 20px 0;
+    border: 2px solid #1377c9;
+    border-radius: 5px;
+}
+#apply:hover {
+    background-color: #090442;
+    color: white;
+    border: 2px solid #090442;
+}
+#coupon-input input {
+    width: 65%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    margin: 20px 0;
+    border: 2px solid #1377c9;
+    border-radius: 5px;
+}
+#coupon-input button {
+    padding: 10px 15px;
+    font-size: 20px;
+    background-color: #090442;
+    color: #fff;
+    border-radius: 8px;
+}
+#otp-input input {
+    width: 65%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: #fff;
+    border: none;
+    margin: 20px 0;
+    border: 2px solid #1377c9;
+    border-radius: 5px;
+}
+#otp-input button {
+    padding: 10px 15px;
+    font-size: 20px;
+    background-color: #090442;
+    color: #fff;
+    border-radius: 8px;
+}
+#congrats {
+    text-align: center;
+}
+#congrats span {
+    color: green;
+    font-weight: 1000;
+}
+#saving {
+    text-align: center;
+}
+#saving span {
+    color: red;
+    font-weight: 1000;
+}
+#discount {
+    color: red;
+    font-weight: 1000;
+}
+#products {
+
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+#products div {
+    padding: 20px;
+    padding-top: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#products div img {
+    width: 80%;
+    display: block;
+    margin: auto;
+}
+#products div button {
+    padding: 0 5px;
+    margin: 5px;
+    font-size: 20px;
+}
+#yourcart>h1 {
+    margin: 20px 35px;
+
+}
+footer {
+    text-align: center;
+    padding: 40px;
+}
+@media screen and (max-width: 900px) {
+
+    #container #ordersummary {
+     left:63%;   
+    position: absolute;
+    margin-top: 50px;
+    height: auto;
+
+    }
+    #nav >div{
+        padding-right: 100px;
+      }
+}

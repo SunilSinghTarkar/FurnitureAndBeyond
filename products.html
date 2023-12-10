@@ -5,167 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/products.css">
     <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        #nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            border: 2px solid rgb(255, 0, 0);
-            display: flex;
-            align-items: center;
-            background-color: #efeded;
-            padding: 0 100px;
-        }
-
-        #nav #icon img {
-            height: 50px;
-            border-radius: 20px;
-            margin: 10px;
-        }
-
-        #userid {
-            text-decoration: none;
-            font-size: 20px;
-            color: #002855;
-        }
-
-        #nav #cart {
-            margin: 10px 30px;
-        }
-
-        #nav input {
-            width: 54%;
-            font-size: 20px;
-            text-align: center;
-            margin: 10px 50px;
-            margin-right: 0;
-            padding: 10px;
-            border-radius: 30px 0 0 30px;
-            border: 2px solid rgb(202, 192, 174);
-        }
-
-        #nav #search {
-            font-size: 20px;
-            text-align: center;
-            padding: 10px;
-            border-radius: 0 30px 30px 0;
-            margin-right: 40px;
-            background-color: #fff;
-            border: 2px solid rgb(202, 192, 174);
-            border-left: none;
-        }
-
-        #container {
-            width: 90%;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-        }
-
-        #container div img {
-            width: 100%;
-        }
-
-        #home {
-            display: flex;
-            justify-content: center;
-            margin: auto;
-            margin-top: 100px;
-        }
-
-        #home a {
-            margin: 6px;
-            padding: 8px;
-            text-decoration: none;
-            color: #1377cc;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        #home a:hover {
-            text-decoration: underline;
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 10px;
-            color: #002955;
-
-        }
-
-        #container-2 {
-            width: 80%;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 20px;
-        }
-
-        #container-2>div img {
-            width: 100%;
-        }
-
-        #container-2 div {
-            padding: 20px;
-            padding-top: 0;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-
-        #container-2 div button {
-            display: block;
-            margin: auto;
-            width: 100%;
-            padding: 10px;
-            font-size: 20px;
-            background: none;
-            color: #1377cc;
-            border: 1px solid #1377cc;
-        }
-
-        h2,
-        h3,
-        p {
-            margin: 8px;
-        }
-
-        #parent-div {
-            box-sizing: border-box;
-            width: 90%;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 10px;
-            background-color: #f4fffe;
-            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-            margin-bottom: 40px;
-
-        }
-
-        #parent-div select {
-            margin: 0 20px;
-            padding: 10px 20px;
-            font-size: 20px;
-            border-radius: 10px;
-        }
-
-        #parent-div select:hover {
-            background-color: #024183;
-            color: white;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-        }
-    </style>
+    
 </head>
 
 <body>
@@ -183,7 +25,7 @@
         <div id="home">
             <a href="/index.html">HOME</a>
             <a href="/cart.html">SHOPS</a>
-            <a href="#">FEATURED BRANDS</a>
+          
         </div>
         <h1>featured brands</h1>
     </div>
@@ -232,6 +74,8 @@
                 <option value="Laptop">Laptop</option>
                 <option value="Mobile">Mobile</option>
                 <option value="Speakers">Speakers</option>
+                <option value="Camera">Camera</option>
+
             </select>
             <select id="filterbyprice">
                 <option value=""><b>Filter By Price</b></option>
@@ -248,115 +92,8 @@
     <footer>
         <div>©2023 furniture & Beyond Inc. and its subsidiaries.</div>
     </footer>
-
+<script src="/products.js"></script>
 </body>
-<script>
-    //  login and logout parts start from here
-    let username = document.getElementById("userid");
-    let usernameinp = localStorage.getItem("username");
-    console.log(usernameinp)
-    if (usernameinp == null) username.innerText = "Sign in";
-    else username.innerText = usernameinp;
-    username.addEventListener("click", function () {
-        if (usernameinp == null) window.location.href = "./signup.html";
-        else window.location.href = "./logout.html";
-    })
 
-    let cart = document.getElementById("cart");
-    cart.addEventListener("click", function () {
-        window.location.href = "/cart.html"
-    })
-    let icon = document.getElementById("icon");
-    let container = document.getElementById("container-2");
-    icon.addEventListener("click", function () {
-        window.location.href = "./index.html";
-    })
-    let globaldata = JSON.parse(localStorage.getItem("productdata"))|| [];
-  
-    display(globaldata);
-    // filer part starts from here
-    let filtercat = document.getElementById("filterbycategory");
-    let filterpri = document.getElementById("filterbyprice");
-    let data = globaldata;
-
-    // filter by category starts from here
-    filtercat.addEventListener("change", function () {
-        if (filtercat.value == "") data = globaldata;
-        if (filtercat.value !== "") {
-            data = globaldata.filter((e) => {
-                return filtercat.value == e.category;
-            })
-        }
-        display(data);
-    })
-    // filter by price starts from here
-    filterpri.addEventListener("change", function () {
-        if (data[0] == null) data = globaldata;
-        let ndata = data;
-        console.log(ndata)
-        if (filterpri.value == "low") ndata = data.sort((a, b) => a.price - b.price);
-        else if (filterpri.value == "high") ndata = data.sort((a, b) => b.price - a.price);
-        display(ndata);
-
-    })
-    // search by name starts from here
-    let searchinp = document.getElementById("searchinp");
-    let searchbtn = document.getElementById("search");
-
-    searchbtn.addEventListener("click", function () {
-        let searchdata = globaldata;
-        if (searchinp.value !== "") {
-            searchdata = searchdata.filter((e) => {
-                return searchinp.value == e.brand;
-            })
-        }
-        console.log(searchdata)
-        display(searchdata);
-        searchinp.value = null
-    })
-
-    let lsdata = JSON.parse(localStorage.getItem("cart")) || [];
-
-    //Display part start from here
-    function display(data) {
-        container.innerHTML = null;
-        data.forEach((e) => {
-            let card = document.createElement("div");
-            let img = document.createElement("img");
-            let brand = document.createElement("h2");
-            let price = document.createElement("h3");
-            let details = document.createElement("p");
-            let category = document.createElement("p");
-            let btn = document.createElement("button");
-
-            img.src = e.img;
-            brand.innerText = e.brand;
-            price.innerText = "$" + e.price;
-            details.innerText = e.details;
-            category.innerText = e.category;
-            btn.innerText = "Add To Cart";
-
-            // add to cart part starts from here
-            btn.addEventListener("click", function () {
-                if (checkduplicate(e)) { alert("Product Already in Cart"); }
-                else {
-                    lsdata.push({ ...e, quantity: 1 });
-                    localStorage.setItem("cart", JSON.stringify(lsdata));
-                    alert("Product Added To Cart")
-                }
-            })
-
-            card.append(img, brand, price, details, category, btn);
-            container.append(card);
-        })
-    }
-    function checkduplicate(data) {
-
-        for (let i = 0; i < lsdata.length; i++) {
-            if (lsdata[i].id == data.id) return true;
-        }
-        return false;
-    }
-</script>
 
 </html>

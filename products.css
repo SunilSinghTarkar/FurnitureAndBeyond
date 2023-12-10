@@ -1,0 +1,203 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            display: flex;
+            align-items: center;
+            background-color: #efeded;
+            padding: 0 100px;
+        }
+
+        #nav #icon img {
+            height: 50px;
+            border-radius: 20px;
+            margin: 10px;
+        }
+
+        #userid {
+            text-decoration: none;
+            font-size: 20px;
+            color: #002855;
+        }
+
+        #nav #cart {
+            margin: 10px 30px;
+        }
+
+        #nav input {
+            width: 54%;
+            font-size: 20px;
+            text-align: center;
+            margin: 10px 50px;
+            margin-right: 0;
+            padding: 10px;
+            border-radius: 30px 0 0 30px;
+            border: 2px solid rgb(202, 192, 174);
+        }
+
+        #nav #search {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+            border-radius: 0 30px 30px 0;
+            margin-right: 40px;
+            background-color: #fff;
+            border: 2px solid rgb(202, 192, 174);
+            border-left: none;
+        }
+
+        #container {
+            width: 90%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 20px;
+        }
+
+        #container div img {
+            width: 100%;
+        }
+
+        #home {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            margin-top: 100px;
+        }
+
+        #home a {
+            margin: 6px;
+            padding: 8px;
+            text-decoration: none;
+            color: #1377cc;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        #home a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #002955;
+
+        }
+
+        #container-2 {
+            width: 80%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+        }
+
+        #container-2>div img {
+            width: 100%;
+
+        }
+
+        #container-2 div {
+            padding: 20px;
+            padding-top: 0;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+        #container-2 div:hover{
+            border: 1px solid #1377cc;
+            padding: 10px;
+           padding-top: 0;
+        }
+        #container-2 div button {
+            display: block;
+            margin: auto;
+            width: 100%;
+            padding: 10px;
+            font-size: 20px;
+            background: none;
+            color: #1377cc;
+            border: 1px solid #1377cc;
+            border-radius: 5px;
+        }
+        #container-2 div button:hover{
+            color: white;
+            background-color: #1377cc;
+        }
+       
+
+        h2,
+        h3,
+        p {
+            margin: 8px;
+        }
+
+        #parent-div {
+            box-sizing: border-box;
+            width: 90%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            background-color: #f4fffe;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-bottom: 40px;
+        }
+
+        #parent-div select {
+            margin: 0 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 10px;
+        }
+
+        #parent-div select:hover {
+            background-color: #024183;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+        }
+
+        @media screen and (max-width: 900px) {
+            #container {
+                width: 90%;
+                margin: auto;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 20px;
+            }
+
+            #container-2 {
+                width: 80%;
+                margin: auto;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 20px;
+            }
+
+            #parent-div select {
+                margin: 0 10px;
+                padding: 10px;
+                font-size: 20px;
+                border-radius: 10px;
+            }
+
+            #nav {
+                padding: 0 20px;
+            }
+
+            #nav input {
+                width: 30%;
+            }
+        }
+    
